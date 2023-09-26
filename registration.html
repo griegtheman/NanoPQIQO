@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NanoPQIQO 2024</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        /* Your Custom CSS */
+        .banner {
+            background-image: url('banner.jpeg');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        #countdown {
+            font-size: 24px;
+        }
+/* Custom CSS for Navbar */
+    .navbar-custom {
+    background-color: #343a40; /* Dark gray background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle shadow to lift navbar */
+    }
+
+    .navbar-custom .navbar-brand,
+    .navbar-custom .nav-link {
+    color: #ffffff; /* white text */
+    }
+
+    .navbar-custom .nav-link:hover {
+    color: #ffb700; /* gold color on hover */
+    }
+
+    .navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">NanoPQIQO 2024</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="abstract.html">Abstract Submission</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="program.html">Program</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registration.html">Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="venue.html">Venue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="visa.html">Visa Information</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sponsors.html">Sponsors and Partners</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Registration Form -->
+<div class="container mt-5">
+    <h2>Conference Registration Form</h2>
+    <form name="conference-registration" method="POST" data-netlify="true">
+      <!-- Personal Details -->
+      <h3>Personal Details</h3>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber">
+      </div>
+      
+      <!-- Organization Details -->
+      <h3>Organization Details</h3>
+      <div class="form-group">
+        <label for="organization">Organization:</label>
+        <input type="text" class="form-control" id="organization" name="organization">
+      </div>
+      <div class="form-group">
+        <label for="designation">Designation:</label>
+        <input type="text" class="form-control" id="designation" name="designation">
+      </div>
+      
+      <!-- Presentation -->
+      <h3>Will you be presenting?</h3>
+      <div class="form-group">
+        <label for="presentationType">Choose a presentation type:</label>
+        <select class="form-control" id="presentationType" name="presentationType" onchange="showAbstractBox(this.value)">
+          <option value="none">No</option>
+          <option value="poster">Poster Presentation</option>
+          <option value="oral">Oral Presentation</option>
+        </select>
+      </div>
+  
+      <!-- Abstract Textbox (Hidden by default) -->
+      <div class="form-group" id="abstractBox" style="display: none;">
+        <label for="abstract">Please provide your abstract:</label>
+        <textarea class="form-control" id="abstract" name="abstract" rows="4"></textarea>
+      </div>
+      
+      <!-- Hidden form field for Netlify -->
+      <input type="hidden" name="form-name" value="conference-registration">
+          <!-- Workshops -->
+    <h3>Select Workshops</h3>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Workshop 1" id="workshop1" name="workshops[]">
+      <label class="form-check-label" for="workshop1">Workshop 1: Introduction to Photonics</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Workshop 2" id="workshop2" name="workshops[]">
+      <label class="form-check-label" for="workshop2">Workshop 2: Advances in Nanotechnology</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Workshop 3" id="workshop3" name="workshops[]">
+      <label class="form-check-label" for="workshop3">Workshop 3: AI in Research</label>
+    </div>
+
+    <!-- Dietary Requirements -->
+    <h3>Dietary Requirements</h3>
+    <div class="form-group">
+      <label for="diet">Please specify any dietary requirements:</label>
+      <textarea class="form-control" id="diet" name="dietaryRequirements" rows="3"></textarea>
+    </div>
+    
+    <!-- Additional Requests -->
+    <h3>Additional Requests</h3>
+    <div class="form-group">
+      <label for="additionalRequests">Any additional requests or remarks:</label>
+      <textarea class="form-control" id="additionalRequests" name="additionalRequests" rows="3"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group mt-3">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start mt-4">
+    <div class="container p-4">
+        <p>© 2024 NanoPQIQO Conference. All Rights Reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+        </ul>
+    </div>
+</footer>
+<script type="text/javascript">
+    function showAbstractBox(value) {
+      if(value === "poster" || value === "oral") {
+        document.getElementById("abstractBox").style.display = "block";
+      } else {
+        document.getElementById("abstractBox").style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
